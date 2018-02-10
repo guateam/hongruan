@@ -1,0 +1,67 @@
+index.250 /*var data = [{
+                name: '关于竞技场防背叛还是防碾压墙的论证系统的实现',
+                itemStyle: itemcolor[2],
+                children: [{
+                    name: '准备工作',
+                    value: 6,
+                    itemStyle: itemcolor[0],
+                    children: [{
+                        name: '刷金币',
+                        value: 2,
+                        itemStyle: itemcolor[0],
+                    }, {
+                        name: '对照组',
+                        value: 2,
+                        itemStyle: itemcolor[0],
+                        children: [{
+                            name: '创小号',
+                            value: 1,
+                            itemStyle: itemcolor[0],
+                        }]
+                    }, {
+                        name: '刷胜率',
+                        value: 2,
+                        itemStyle: itemcolor[2],
+                    }]
+                }, {
+                    name: '实验操作',
+                    value: 6,
+                    itemStyle: itemcolor[1],
+                    children: [{
+                        name: '收集在许可范围内的竞技场比赛',
+                        value: 2,
+                        children: [{
+                            name: '收集视频',
+                            value: 1
+                        }, {
+                            name: '自己打',
+                            value: 1,
+                            itemStyle: itemcolor[0],
+                        }]
+                    }]
+                }, {
+                    name: '实验操作',
+                    value: 4,
+                    children: [{
+                        name: '胡扯',
+                        value: 2,
+                        itemStyle: itemcolor[1],
+                    }]
+                }]
+            }];*/
+
+index.409 /*,
+                dataZoom: [{
+                    type: 'slider',
+                    show: true,
+                    xAxisIndex: [0],
+                    start: 0,
+                    end: 100
+                }, {
+                    type: 'inside',
+                    xAxisIndex: [0],
+                    start: 0,
+                    end: 100
+                }]
+                不知道为啥不能用。。。
+                */
