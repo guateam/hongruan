@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -9,362 +10,195 @@
 
     <title>历史浏览 </title>
 
-    <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
-    
-    <!-- Custom styling plus plugins -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
-  </head>
+    {include file='common/css'}
+</head>
 
-  <body class="nav-md">
+<body class="nav-md">
     <div class="container body">
-      <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paper-plane"></i> <span>众包平台</span></a>
-            </div>
+        <div class="main_container">
+            {include file='common/left'}
+            <!-- /top navigation -->
 
-            <div class="clearfix"></div>
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="">
 
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="../image/3.jpg" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h2>Graman</h2>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> 我的项目 <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="index.html">当前进行</a></li>
-                      <li><a href="time.html">进度安排</a></li>
-                      <li><a href="history.html">历史记录</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-edit"></i> 个人信息 <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="companies.html">信息编辑</a></li>
-                      <li><a href="add-com.html">信息补充</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-
-            </div>
-            <!-- /sidebar menu -->
-
-            <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="编辑信息">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Lock">
-                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="登出" href="login.html">
-                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-              </a>
-            </div>
-            <!-- /menu footer buttons -->
-          </div>
-        </div>
-
-        <!-- top navigation -->
-        <div class="top_nav">
-          <div class="nav_menu">
-            <nav>
-              <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-              </div>
-
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="../image/3.jpg" alt="">Graman
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;">编辑信息</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> 登出</a></li>
-                  </ul>
-                </li>
-                <li role="presentation" class="dropdown">
-                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
-                  </a>
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a href="email.html">
-                        <span class="image"><img src="../image/2.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>阿胶如果</span>
-                          <span class="time">3分钟以前</span>
-                        </span>
-                        <span class="message">
-                          惹我退热贴共花费太皇太后让他如同一个天然氧化铁然后让他和热个人都搞不定给别人的呀
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="../image/2.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>他会反弹如火如荼</span>
-                          <span class="time">3分钟以前</span>
-                        </span>
-                        <span class="message">
-                          让个人各人不要停人让你讨厌日本vyrrvvtvtt 4的是个大染缸会突然好的发表你的好
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="../image/2.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>王仁甫</span>
-                          <span class="time">10分钟以前</span>
-                        </span>
-                        <span class="message">
-                          金额为开发进度辛苦你就彻底离开粉红色i反对别人提供
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="../image/2.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>风湿痛</span>
-                          <span class="time">1小时以前</span>
-                        </span>
-                        <span class="message">
-                          从你的看法呢看来是的肌肤的处理数据的课程
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="text-center">
-                        <a>
-                          <strong>查看全部</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-        <!-- /top navigation -->
-
-        <!-- page content -->
-        <div class="right_col" role="main">
-          <div class="">
-
-            <div class="clearfix"></div>
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>历史项目浏览</h2>
                     <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
 
                     <div class="row">
-                      <div class="col-md-55">
-                        <div class="thumbnail">
-                          <div class="image view view-first" onClick="window.location.href='project.html'">
-                            <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
-                            <div class="mask">
-                              <p>点击查看详情</p>
-                            </div>
-                          </div>
-                          <div class="caption">
-                            <p>这是项目名称</p>
-                            <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-55">
-                        <div class="thumbnail">
-                          <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
-                            <div class="mask">
-                              <p>点击查看详情</p>
-                            </div>
-                          </div>
-                          <div class="caption">
-                            <p>这是项目名称</p>
-                            <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-55">
-                        <div class="thumbnail">
-                          <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
-                            <div class="mask">
-                              <p>点击查看详情</p>
-                            </div>
-                          </div>
-                          <div class="caption">
-                            <p>这是项目名称</p>
-                            <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-55">
-                        <div class="thumbnail">
-                          <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
-                            <div class="mask">
-                              <p>点击查看详情</p>
-                            </div>
-                          </div>
-                          <div class="caption">
-                            <p>这是项目名称</p>
-                            <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-55">
-                        <div class="thumbnail">
-                          <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
-                            <div class="mask">
-                              <p>点击查看详情</p>
-                            </div>
-                          </div>
-                          <div class="caption">
-                            <p>这是项目名称</p>
-                            <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
-                          </div>
-                        </div>
-                      </div>
+                        <div class="col-md-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>历史项目浏览</h2>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+
+                                    <div class="row">
+                                        <div class="col-md-55">
+                                            <div class="thumbnail">
+                                                <div class="image view view-first" onClick="window.location.href='project.html'">
+                                                    <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
+                                                    <div class="mask">
+                                                        <p>点击查看详情</p>
+                                                    </div>
+                                                </div>
+                                                <div class="caption">
+                                                    <p>这是项目名称</p>
+                                                    <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-55">
+                                            <div class="thumbnail">
+                                                <div class="image view view-first">
+                                                    <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
+                                                    <div class="mask">
+                                                        <p>点击查看详情</p>
+                                                    </div>
+                                                </div>
+                                                <div class="caption">
+                                                    <p>这是项目名称</p>
+                                                    <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-55">
+                                            <div class="thumbnail">
+                                                <div class="image view view-first">
+                                                    <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
+                                                    <div class="mask">
+                                                        <p>点击查看详情</p>
+                                                    </div>
+                                                </div>
+                                                <div class="caption">
+                                                    <p>这是项目名称</p>
+                                                    <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-55">
+                                            <div class="thumbnail">
+                                                <div class="image view view-first">
+                                                    <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
+                                                    <div class="mask">
+                                                        <p>点击查看详情</p>
+                                                    </div>
+                                                </div>
+                                                <div class="caption">
+                                                    <p>这是项目名称</p>
+                                                    <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-55">
+                                            <div class="thumbnail">
+                                                <div class="image view view-first">
+                                                    <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
+                                                    <div class="mask">
+                                                        <p>点击查看详情</p>
+                                                    </div>
+                                                </div>
+                                                <div class="caption">
+                                                    <p>这是项目名称</p>
+                                                    <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
 
 
-                      <div class="col-md-55">
-                        <div class="thumbnail">
-                          <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
-                            <div class="mask">
-                              <p>点击查看详情</p>
+                                        <div class="col-md-55">
+                                            <div class="thumbnail">
+                                                <div class="image view view-first">
+                                                    <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
+                                                    <div class="mask">
+                                                        <p>点击查看详情</p>
+                                                    </div>
+                                                </div>
+                                                <div class="caption">
+                                                    <p>这是项目名称</p>
+                                                    <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-55">
+                                            <div class="thumbnail">
+                                                <div class="image view view-first">
+                                                    <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
+                                                    <div class="mask">
+                                                        <p>点击查看详情</p>
+                                                    </div>
+                                                </div>
+                                                <div class="caption">
+                                                    <p>这是项目名称</p>
+                                                    <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-55">
+                                            <div class="thumbnail">
+                                                <div class="image view view-first">
+                                                    <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
+                                                    <div class="mask">
+                                                        <p>点击查看详情</p>
+                                                    </div>
+                                                </div>
+                                                <div class="caption">
+                                                    <p>这是项目名称</p>
+                                                    <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-55">
+                                            <div class="thumbnail">
+                                                <div class="image view view-first">
+                                                    <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
+                                                    <div class="mask">
+                                                        <p>点击查看详情</p>
+                                                    </div>
+                                                </div>
+                                                <div class="caption">
+                                                    <p>这是项目名称</p>
+                                                    <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-55">
+                                            <div class="thumbnail">
+                                                <div class="image view view-first">
+                                                    <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
+                                                    <div class="mask">
+                                                        <p>点击查看详情</p>
+                                                    </div>
+                                                </div>
+                                                <div class="caption">
+                                                    <p>这是项目名称</p>
+                                                    <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
-                          <div class="caption">
-                            <p>这是项目名称</p>
-                            <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
-                          </div>
                         </div>
-                      </div>
-                      <div class="col-md-55">
-                        <div class="thumbnail">
-                          <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
-                            <div class="mask">
-                              <p>点击查看详情</p>
-                            </div>
-                          </div>
-                          <div class="caption">
-                            <p>这是项目名称</p>
-                            <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-55">
-                        <div class="thumbnail">
-                          <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
-                            <div class="mask">
-                              <p>点击查看详情</p>
-                            </div>
-                          </div>
-                          <div class="caption">
-                            <p>这是项目名称</p>
-                            <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-55">
-                        <div class="thumbnail">
-                          <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
-                            <div class="mask">
-                              <p>点击查看详情</p>
-                            </div>
-                          </div>
-                          <div class="caption">
-                            <p>这是项目名称</p>
-                            <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-55">
-                        <div class="thumbnail">
-                          <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
-                            <div class="mask">
-                              <p>点击查看详情</p>
-                            </div>
-                          </div>
-                          <div class="caption">
-                            <p>这是项目名称</p>
-                            <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
-                          </div>
-                        </div>
-                      </div>
                     </div>
-                  </div>
+
                 </div>
-              </div>
             </div>
+            <!-- /page content -->
 
-          </div>
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
         </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
-      </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
+    {include file='common/js'}
 
-    <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+</body>
 
-  </body>
 </html>
