@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        .high {
+            color: #F54F4A
+        }
+        
+        .mid {
+            color: #FCCE10
+        }
+        
+        .low {
+            color: #B5C334
+        }
+    </style>
+    <title>接包人员</title>
+    {include file='common/css'}
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            {include file='common/left'}
+            <!-- /top navigation -->
+
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="">
+
+                    <div class="clearfix"></div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h1>{$project.name}</h1>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+
+                                    <div class="col-md-12 col-lg-12 col-sm-11">
+
+                                        <div class="col-md-12 col-lg-12 col-sm-11">
+                                            <h2>项目名称：<span style="color: #00ace6">{$project.name}</span></h2>
+                                            <h2>起始时间：<span style="color: #00ace6">{$project.starttime}</span></h2>
+                                            <h2>截止时间：<span style="color: #00ace6">{$project.endtime}</span></h2>
+                                            <h2>发包人员：<span style="color: #00ace6">{$project.contractor}</span></h2>
+                                            <h2>安全等级：<span class='{$project.color}'>{$project.safetygrade}</span></h2>
+                                            <br />
+                                        </div>
+                                        <!-- blockquote -->
+                                        <blockquote>
+                                            <h3>具体说明：</h3>
+                                            <p>{$project.plan}
+                                            </p>
+                                        </blockquote>
+
+                                    </div>
+
+                                    <div class="clearfix"></div>
+
+
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="ln_solid"></div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-primary">确认获取项目</button>
+                                        <button type="submit" class="btn btn-primary">查看实施计划</button>
+                                        <button id="send" type="submit" class="btn btn-success">签到并开始工作</button>
+                                        <button type="send" class="btn btn-primary" onClick="window.location.href=''">进度提交</button>
+                                        <button type="send" class="btn btn-warning" onClick="window.location.href='send.html'">联系管理员</button>
+                                        <button type="send" class="btn btn-danger" onClick="window.location.href='send.html'">报告bug</button>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="height: 20px">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h1>当前项目结构</h1>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div id="status" style="height:500%"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h1>事件安排表</h1>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div id="waterfall" style="height:300%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h1>代办事项</h1>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <table class="table" contenteditable="true">
+                                        <thead>
+                                            <tr>
+                                                <th>等待事件</th>
+                                                <th>负责人</th>
+                                                <th>交付时间</th>
+                                                <th>状态</th>
+                                                <th>等级</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id='waitinglist'>
+                                            <tr v-bind:class="{'success':item.issuccess,'warning':item.iswarning,'danger':item.iserror}" v-for='item in items'>
+                                                <td>{{item.name}}</td>
+                                                <td>{{item.user}}</td>
+                                                <td>{{item.endtime}}</td>
+                                                <td>{{item.status}}</td>
+                                                <td>{{item.level}}</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <div class="clearfix"></div>
+                                    <div class="pagination">
+                                        <ul contenteditable="true" class="pagination pagination-centered">
+                                            <li><a href="#">上一页</a></li>
+                                            <li><a href="#">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">4</a></li>
+                                            <li><a href="#">5</a></li>
+                                            <li><a href="#">下一页</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h1>聊天室</h1>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div class='col-md-12'>
+                                        <ul id='chartingbox'>
+
+                                            <li v-for='item in items' v-bind:class="{'high':item.iserror,'mid':item.iswarning,'low':item.issuccess}">[{{item.status}}][{{item.time}}][{{item.user}}]{{item.note}}</li>
+
+                                        </ul>
+                                    </div>
+                                    <hr/>
+                                    <form class="form-group" id='chartform'>
+                                        <div class="col-md-11">
+                                            <input type="text" class="form-control" name='message'>
+
+                                        </div>
+                                        <div class="col-lg-1">
+                                            <button type="button" class="btn btn-success" onclick="getChartingboxData(1)">发送</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h1>项目资源</h1>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <table class="table" contenteditable="true">
+                                        <thead>
+                                            <tr>
+                                                <th>资源名称</th>
+                                                <th>上传人</th>
+                                                <th>交付时间</th>
+                                                <th>状态</th>
+                                                <th>等级</th>
+                                                <th>链接</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id='resourcelist'>
+                                            <tr v-bind:class="{'info':item.isinfo,'success':item.issuccess,'warning':item.iswarning,'error':item.iserror}" v-for="item in items">
+                                                <td>{{item.name}}</td>
+                                                <td>{{item.uploader}}</td>
+                                                <td>{{item.uploadtime}}</td>
+                                                <td>{{item.status}}</td>
+                                                <td>{{item.safetygrade}}</td>
+                                                <td>
+                                                    <a class='btn btn-info' href="send">下载</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="pagination">
+                                        <ul contenteditable="true" class="pagination pagination-centered">
+                                            <li><a href="#">上一页</a></li>
+                                            <li><a href="#">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">4</a></li>
+                                            <li><a href="#">5</a></li>
+                                            <li><a href="#">下一页</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {include file='common/js'}
+        <script type="text/javascript">
+            var structureChart = echarts.init(document.getElementById('status'));
+
+            var option = {
+
+                series: {
+                    radius: ['15%', '80%'],
+                    type: 'sunburst',
+                    sort: null,
+                    highlightPolicy: 'ancestor',
+                    data: [],
+                    label: {
+                        rotate: 'radial'
+                    },
+                    levels: [],
+                    itemStyle: {
+                        color: '#ddd',
+                        borderWidth: 2
+                    }
+                }
+            };
+
+            structureChart.setOption(option);
+            structureChart.showLoading();
+
+
+            $.get("{:url('user/index/structuredata')}").done(function(data) {
+                if (data.status == 1) {
+                    option = {
+                        series: {
+                            data: data.data
+                        }
+                    };
+                    structureChart.hideLoading();
+                    structureChart.setOption(option);
+                }
+            });
+
+            var waterfallChart = echarts.init(document.getElementById('waterfall'));
+
+            // 指定图表的配置项
+
+
+            option1 = {
+                title: {
+                    text: '今日事件安排表',
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                        type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+                    },
+                    formatter: function(params) {
+                        var start = params[0];
+                        var end = params[1];
+                        var status = params[2];
+                        return start.name + '<br/>' + start.seriesName + ' : ' + new Date(start.value).toLocaleTimeString() + '<br/>' + end.seriesName + ' : ' + new Date(end.value).toLocaleTimeString() + '<br/>' + status.seriesName + ':' + status.value;
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'time',
+                    splitLine: {
+                        show: true
+                    }
+                },
+                yAxis: {
+                    type: 'category',
+                    splitLine: {
+                        show: false
+                    },
+                    splitLine: {
+                        show: true
+                    },
+                    data: []
+                },
+                series: [{
+                    name: '开始时间',
+                    type: 'bar',
+                    stack: '总量',
+                    itemStyle: {
+                        normal: {
+                            barBorderColor: 'rgba(0,0,0,0)',
+                            color: 'rgba(0,0,0,0)'
+                        },
+                        emphasis: {
+                            barBorderColor: 'rgba(0,0,0,0)',
+                            color: 'rgba(0,0,0,0)'
+                        }
+                    },
+                    data: []
+                }, {
+                    name: '结束时间',
+                    type: 'bar',
+                    stack: '总量',
+                    itemStyle: {
+                        normal: {　　　　　　　　　　　　　　 //好，这里就是重头戏了，定义一个list，然后根据所以取得不同的值，这样就实现了，
+                            color: function(params) {
+                                // build a color map as your need.
+                                var colorList = [
+                                    '#C1232B', '#B5C334', '#FCCE10', '#E87C25', '#27727B',
+                                    '#FE8463', '#9BCA63', '#FAD860', '#F3A43B', '#60C0DD',
+                                    '#D7504B', '#C6E579', '#F4E001', '#F0805A', '#26C0C0'
+                                ];
+                                return colorList[params.dataIndex]
+                            }
+                        }
+                    },
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'inside'
+
+                        }
+                    },
+                    data: []
+                }, {
+                    name: '状态',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: false,
+                            position: 'inside'
+
+                        }
+                    },
+                    data: []
+                }]
+            };
+
+            // 使用刚指定的配置项和数据显示图表。
+            waterfallChart.showLoading();
+            waterfallChart.setOption(option1);
+
+
+
+            $.get("{:url('user/index/waterfall')}").done(function(data) {
+                if (data.status == 1) {
+                    start = [];
+                    end = [];
+                    projstatus = [];
+                    projectName = []
+                    for (key in data.data) {
+                        item = dat[key];
+                        projectName.push(item['name']);
+                        start.push(item['starttime']);
+                        end.push(item['endtime']);
+                        projstatus.push(item['status']);
+                    }
+                    option = {
+
+                        yAxis: {
+
+                            data: projectName
+                        },
+                        series: [{
+
+                            data: start
+                        }, {
+
+                            data: end
+                        }, {
+
+                            data: projstatus
+                        }]
+                    };
+                    waterfallChart.hideLoading();
+                    waterfallChart.setOption(option);
+                }
+            });
+
+            var waitinglist = new Vue({
+                el: '#waitinglist',
+                data: {
+                    items: []
+                }
+            });
+
+
+            $.get("{:url('user/index/waitinglist')}").done(function(data) {
+                if (data.status == 1) {
+                    waitinglist.items = [];
+                    items = data.data;
+
+                    for (key in items) {
+                        item = items[key];
+                        issuccess = false;
+                        iswarning = false;
+                        iserror = false;
+                        switch (item['status']) {
+                            case '正点':
+                                issuccess = true;
+                                break;
+                            case '可能延期':
+                                iswarning = true;
+                                break;
+                            case '延期':
+                                iserror = true;
+                                break;
+                            default:
+
+                                break;
+                        }
+                        waitinglist.items.push({
+                            'name': item['name'],
+                            'user': item['user'],
+                            'endtime': item['endtime'],
+                            'status': item['status'],
+                            'level': item['level'],
+                            'issuccess': issuccess,
+                            'iswarning': iswarning,
+                            'iserror': iserror
+                        });
+                    }
+                } else {
+                    waitinglist.items = [];
+                }
+            });
+            var resourcelist = new Vue({
+                el: '#resourcelist',
+                data: {
+                    items: []
+                }
+            });
+
+
+            $.get("{:url('user/index/resourcelist')}").done(function(data) {
+                if (data.status == 1) {
+                    resourcelist.items = [];
+                    items = data.data;
+
+                    for (key in items) {
+                        item = items[key];
+                        isinfo = false;
+                        issuccess = false;
+                        iswarning = false;
+                        iserror = false;
+                        switch (item['status']) {
+                            case '可用':
+                                issuccess = true;
+                                switch (item['type']) {
+                                    case '计划书':
+                                        issuccess = false;
+                                        isinfo = true;
+                                        break;
+
+                                    default:
+                                        break;
+                                }
+                                break;
+                            case '特殊':
+                                iswarning = true;
+                                break;
+                            case '不可用':
+                                iserror = true;
+                                break;
+                            default:
+
+                                break;
+                        }
+
+                        resourcelist.items.push({
+                            'name': item['name'],
+                            'uploader': item['uploader'],
+                            'uploadtime': item['uploadtime'],
+                            'status': item['status'],
+                            'safetygrade': item['safetygrade'],
+                            'link': item['link'],
+                            'issuccess': issuccess,
+                            'iswarning': iswarning,
+                            'iserror': iserror,
+                            'isinfo': isinfo
+                        });
+                    }
+                    //console.info(resourcelist.items);
+                } else {
+                    resourcelist.items = [];
+                }
+            });
+            var chartingbox = new Vue({
+                el: '#chartingbox',
+                data: {
+                    items: []
+                }
+            });
+
+
+            $.get("{:url('user/index/chartingboxdata')}").done(function(data) {
+                if (data.status == 1) {
+                    chartingbox.items = [];
+                    items = data.data;
+
+                    for (key in items) {
+                        item = items[key];
+                        issuccess = false;
+                        iswarning = false;
+                        iserror = false;
+                        switch (item['status']) {
+                            case 'Note':
+                                iswarning = true;
+                                break;
+                            case 'Debug':
+                                iserror = true;
+                                break;
+                            case '管理员':
+                                issuccess = true;
+                                break;
+                            default:
+
+                                break;
+                        }
+
+                        chartingbox.items.push({
+                            'time': item['time'],
+                            'status': item['status'],
+                            'user': item['user'],
+                            'note': item['note'],
+                            'issuccess': issuccess,
+                            'iswarning': iswarning,
+                            'iserror': iserror,
+                        });
+                    }
+                    //console.info(resourcelist.items);
+                } else {
+                    chartingbox.items = [];
+                }
+            });
+        </script>
+</body>
+
+</html>

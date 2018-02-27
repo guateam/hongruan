@@ -50,7 +50,6 @@ class Admin extends Controller
         return $this->fetch('server');
     }
     public function reviseuser(){
-
         return $this->fetch('revise-user');
     }
     public function revisecon(){
@@ -68,7 +67,7 @@ class Admin extends Controller
         }
         return $this->fetch('details-user');
     }
-    public function detailscon($name){
+    public function detailscon($username){
         $user=\app\api\model\Contractors::get(['UserName'=>$username]);
         if($user){
             $this->assign('user',$user);
