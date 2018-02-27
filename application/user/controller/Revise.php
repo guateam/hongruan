@@ -5,6 +5,6 @@ use think\Controller;
 class Revise extends Controller
 {
     public function index(){
-        $this->fetch('revise');
+        return $this->fetch('revise');
     }
 }

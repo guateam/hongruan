@@ -5,6 +5,6 @@ use think\Controller;
 class Send extends Controller
 {
     public function index(){
-        $this->fetch('send');
+        return $this->fetch('send');
     }
 }

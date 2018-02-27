@@ -5,6 +5,6 @@ use think\Controller;
 class Emaillist extends Controller
 {
     public function index(){
-        $this->fetch('email-list');
+        return $this->fetch('email-list');
     }
 }

@@ -1,10 +1,11 @@
 <?php
-namespace app\user\controller;
+namespace app\contractor\controller;
 use think\Controller;
 //use think\db;
 class Project extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return $this->fetch('project');
     }
 }

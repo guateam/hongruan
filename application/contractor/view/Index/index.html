@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>发包人员</title>
+    {include file='common/css'}
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            {include file='common/left'}
+            <!-- /top navigation -->
+
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="">
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h3>概况</h3>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="">
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2> <a href="{:url('contractor/project/index')}">当前进行</a> </h2>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div id="pan" style="height:500%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-sm-6 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>待办事件</h2>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <table class="table table-hover" contenteditable="true">
+                                        <thead>
+                                            <tr>
+                                                <th>等待事件</th>
+                                                <th>提交人</th>
+                                                <th>提交时间</th>
+                                                <th>所属项目</th>
+                                                <th>种类</th>
+                                                <th>严重等级</th>
+                                                <th>概述</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id='waitinglist'>
+                                            <tr class='danger'>
+                                                <td>item1</td>
+                                                <td>hanerx</td>
+                                                <td>2018-2-27 9:00</td>
+                                                <td>proj1</td>
+                                                <td>bug</td>
+                                                <td>高</td>
+                                                <td>link不可用</td>
+                                            </tr>
+                                            <tr class='warning'>
+                                                <td>item1</td>
+                                                <td>hanerx</td>
+                                                <td>2018-2-27 9:00</td>
+                                                <td>proj1</td>
+                                                <td>资源</td>
+                                                <td>中</td>
+                                                <td>请求项目美工</td>
+                                            </tr>
+                                            <tr class='info'>
+                                                <td>item1</td>
+                                                <td>hanerx</td>
+                                                <td>2018-2-27 9:00</td>
+                                                <td>proj1</td>
+                                                <td>资源</td>
+                                                <td>低</td>
+                                                <td>请求项目美工</td>
+                                            </tr>
+                                            <tr class='info'>
+                                                <td>item1</td>
+                                                <td>hanerx</td>
+                                                <td>2018-2-27 9:00</td>
+                                                <td>proj1</td>
+                                                <td>资源</td>
+                                                <td>低</td>
+                                                <td>请求项目美工</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-md-8 col-sm-6 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2> 日志 </h2>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <ul>
+                                        <li>[2018-2-27 9:00]@[管理员]#[debug]%[众包软件]:test</li>
+                                        <li>[2018-2-27 9:00]@[管理员]#[debug]%[众包软件]:test</li>
+                                        <li>[2018-2-27 9:00]@[管理员]#[debug]%[众包软件]:test</li>
+                                        <li>[2018-2-27 9:00]@[管理员]#[debug]%[众包软件]:test</li>
+                                        <li>[2018-2-27 9:00]@[管理员]#[debug]%[众包软件]:test</li>
+                                        <li>[2018-2-27 9:00]@[hanerx]#[打卡]%[众包软件]:打卡上机</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2> 项目概况 </h2>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <table class="table table-hover" contenteditable="true">
+                                        <thead>
+                                            <tr>
+                                                <th>项目名</th>
+                                                <th>负责人</th>
+                                                <th>截至时间</th>
+                                                <th>等级</th>
+                                                <th>状态</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id='waitinglist'>
+                                            <tr class='danger'>
+                                                <td>proj1</td>
+                                                <td>000</td>
+                                                <td>2019-1-1</td>
+                                                <td>-1</td>
+                                                <td>延期</td>
+                                            </tr>
+                                            <tr class='warning'>
+                                                <td>proj2</td>
+                                                <td>000</td>
+                                                <td>2019-1-1</td>
+                                                <td>-1</td>
+                                                <td>可能延期</td>
+                                            </tr>
+                                            <tr class='success'>
+                                                <td>proj3</td>
+                                                <td>000</td>
+                                                <td>2019-1-1</td>
+                                                <td>-1</td>
+                                                <td>正点</td>
+                                            </tr>
+                                            <tr class='success'>
+                                                <td>proj4</td>
+                                                <td>000</td>
+                                                <td>2019-1-1</td>
+                                                <td>-1</td>
+                                                <td>正点</td>
+                                            </tr>
+                                            <tr class='success'>
+                                                <td>proj5</td>
+                                                <td>000</td>
+                                                <td>2019-1-1</td>
+                                                <td>-1</td>
+                                                <td>正点</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2> 接包人员概况 </h2>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <table class="table table-hover" contenteditable="true">
+                                        <thead>
+                                            <tr>
+                                                <th>接包人员</th>
+                                                <th>等级</th>
+                                                <th>状态</th>
+                                                <th>繁忙指数</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id='waitinglist'>
+                                            <tr class='success'>
+                                                <td>hanerx3</td>
+                                                <td>-1</td>
+                                                <td>steam游戏中</td>
+                                                <td>空闲</td>
+
+                                            </tr>
+                                            <tr class='warning'>
+                                                <td>hanerx</td>
+                                                <td>-1</td>
+                                                <td>工作中</td>
+                                                <td>正常</td>
+
+                                            </tr>
+                                            <tr class='danger'>
+                                                <td>hanerx1</td>
+                                                <td>-1</td>
+                                                <td>工作中</td>
+                                                <td>繁忙</td>
+
+                                            </tr>
+                                            <tr class='danger'>
+                                                <td>hanerx2</td>
+                                                <td>-1</td>
+                                                <td>工作中</td>
+                                                <td>繁忙</td>
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-sm-6 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2> 聊天室 </h2>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <ul>
+                                        <li>[2018-2-27 9:00]@[管理员]#[debug]%[众包软件]:test</li>
+                                        <li>[2018-2-27 9:00]@[管理员]#[debug]%[众包软件]:test</li>
+                                        <li>[2018-2-27 9:00]@[管理员]#[debug]%[众包软件]:test</li>
+                                        <li>[2018-2-27 9:00]@[管理员]#[debug]%[众包软件]:test</li>
+                                    </ul>
+                                    <form class="form-group" id='chartform'>
+                                        <div class="col-md-11">
+                                            <input type="text" class="form-control" name='message'>
+
+                                        </div>
+                                        <div class="col-lg-1">
+                                            <button type="button" class="btn btn-success" onclick="getChartingboxData(1)">发送</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <!--         <footer>
+          <div class="pull-right">
+          </div>
+          <div class="clearfix"></div>
+        </footer> -->
+        <!-- /footer content -->
+    </div>
+    </div>
+
+    {include file='common/js'}
+    <script>
+        option = {
+            title: {
+                text: '正在进行项目',
+                subtext: '',
+                x: 'center'
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: ['正点', '可能延期', '延期', '其他']
+            },
+            series: [{
+                name: '项目数量',
+                type: 'pie',
+                radius: '55%',
+                center: ['50%', '60%'],
+                data: [{
+                    value: 335,
+                    name: '正点'
+                }, {
+                    value: 310,
+                    name: '可能延期'
+                }, {
+                    value: 234,
+                    name: '延期'
+                }, {
+                    value: 234,
+                    name: '其他'
+                }],
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }]
+        };
+        var panChart = echarts.init(document.getElementById('pan'));
+        panChart.setOption(option);
+    </script>
+</body>
+
+</html>

@@ -76,9 +76,10 @@
                                         <button type="submit" class="btn btn-primary">确认获取项目</button>
                                         <button type="submit" class="btn btn-primary">查看实施计划</button>
                                         <button id="send" type="submit" class="btn btn-success">签到并开始工作</button>
-                                        <button type="send" class="btn btn-primary" onClick="window.location.href='send.html'">进度提交</button>
+                                        <button type="send" class="btn btn-primary" onClick="window.location.href=''">进度提交</button>
                                         <button type="send" class="btn btn-warning" onClick="window.location.href='send.html'">联系管理员</button>
                                         <button type="send" class="btn btn-danger" onClick="window.location.href='send.html'">报告bug</button>
+
                                     </div>
                                 </div>
                                 <div class="col-md-12" style="height: 20px">
@@ -126,7 +127,7 @@
                                             </tr>
                                         </thead>
                                         <tbody id='waitinglist'>
-                                            <tr v-bind:class="{'success':item.issuccess,'warning':item.iswarning,'error':item.iserror}" v-for='item in items'>
+                                            <tr v-bind:class="{'success':item.issuccess,'warning':item.iswarning,'danger':item.iserror}" v-for='item in items'>
                                                 <td>{{item.name}}</td>
                                                 <td>{{item.user}}</td>
                                                 <td>{{item.endtime}}</td>
@@ -204,12 +205,22 @@
                                                 <td>{{item.status}}</td>
                                                 <td>{{item.safetygrade}}</td>
                                                 <td>
-                                                    <a class='btn btn-info' href="www.baidu.com">下载</a>
+                                                    <a class='btn btn-info' href="send">下载</a>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
-
+                                    <div class="pagination">
+                                        <ul contenteditable="true" class="pagination pagination-centered">
+                                            <li><a href="#">上一页</a></li>
+                                            <li><a href="#">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">4</a></li>
+                                            <li><a href="#">5</a></li>
+                                            <li><a href="#">下一页</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -242,38 +253,22 @@
                     }
                 }
             };
-            structureChart.hideLoading();
+
             structureChart.setOption(option);
+            structureChart.showLoading();
 
-            function getStuctureData() {
 
-                var xmlhttp;
-                if (window.XMLHttpRequest) {
-                    //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
-                    xmlhttp = new XMLHttpRequest();
-                } else {
-                    // IE6, IE5 浏览器执行代码
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                xmlhttp.onreadystatechange = function() {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        json = JSON.parse(xmlhttp.responseText);
-                        if (json['status'] == 1) {
-                            option = {
-                                series: {
-                                    data: json['data']
-                                }
-                            };
-                            structureChart.hideLoading();
-                            structureChart.setOption(option);
+            $.get("{:url('user/index/structuredata')}").done(function(data) {
+                if (data.status == 1) {
+                    option = {
+                        series: {
+                            data: data.data
                         }
-                    }
+                    };
+                    structureChart.hideLoading();
+                    structureChart.setOption(option);
                 }
-                xmlhttp.open("POST", "{:url('user/index/structuredata')}", false);
-                xmlhttp.send();
-            }
-            getStuctureData();
-
+            });
 
             var waterfallChart = echarts.init(document.getElementById('waterfall'));
 
@@ -374,59 +369,46 @@
             };
 
             // 使用刚指定的配置项和数据显示图表。
+            waterfallChart.showLoading();
             waterfallChart.setOption(option1);
 
-            function getWaterfallData() {
 
-                var xmlhttp;
-                if (window.XMLHttpRequest) {
-                    //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
-                    xmlhttp = new XMLHttpRequest();
-                } else {
-                    // IE6, IE5 浏览器执行代码
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                xmlhttp.onreadystatechange = function() {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        json = JSON.parse(xmlhttp.responseText);
-                        if (json['status'] == 1) {
-                            start = [];
-                            end = [];
-                            projstatus = [];
-                            projectName = []
-                            for (key in json['data']) {
-                                item = json['data'][key];
-                                projectName.push(item['name']);
-                                start.push(item['starttime']);
-                                end.push(item['endtime']);
-                                projstatus.push(item['status']);
-                            }
-                            option = {
 
-                                yAxis: {
-
-                                    data: projectName
-                                },
-                                series: [{
-
-                                    data: start
-                                }, {
-
-                                    data: end
-                                }, {
-
-                                    data: projstatus
-                                }]
-                            };
-                            waterfallChart.hideLoading();
-                            waterfallChart.setOption(option);
-                        }
+            $.get("{:url('user/index/waterfall')}").done(function(data) {
+                if (data.status == 1) {
+                    start = [];
+                    end = [];
+                    projstatus = [];
+                    projectName = []
+                    for (key in data.data) {
+                        item = dat[key];
+                        projectName.push(item['name']);
+                        start.push(item['starttime']);
+                        end.push(item['endtime']);
+                        projstatus.push(item['status']);
                     }
+                    option = {
+
+                        yAxis: {
+
+                            data: projectName
+                        },
+                        series: [{
+
+                            data: start
+                        }, {
+
+                            data: end
+                        }, {
+
+                            data: projstatus
+                        }]
+                    };
+                    waterfallChart.hideLoading();
+                    waterfallChart.setOption(option);
                 }
-                xmlhttp.open("GET", "{:url('user/index/waterfall')}", false);
-                xmlhttp.send();
-            }
-            getWaterfallData();
+            });
+
             var waitinglist = new Vue({
                 el: '#waitinglist',
                 data: {
@@ -434,63 +416,46 @@
                 }
             });
 
-            function getWaitingList() {
-                var xmlhttp;
-                if (window.XMLHttpRequest) {
-                    //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
-                    xmlhttp = new XMLHttpRequest();
-                } else {
-                    // IE6, IE5 浏览器执行代码
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                xmlhttp.onreadystatechange = function() {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
-                        json = JSON.parse(xmlhttp.responseText);
+            $.get("{:url('user/index/waitinglist')}").done(function(data) {
+                if (data.status == 1) {
+                    waitinglist.items = [];
+                    items = data.data;
 
-                        if (json['status'] == 1) {
-                            waitinglist.items = [];
-                            items = json['data'];
+                    for (key in items) {
+                        item = items[key];
+                        issuccess = false;
+                        iswarning = false;
+                        iserror = false;
+                        switch (item['status']) {
+                            case '正点':
+                                issuccess = true;
+                                break;
+                            case '可能延期':
+                                iswarning = true;
+                                break;
+                            case '延期':
+                                iserror = true;
+                                break;
+                            default:
 
-                            for (key in items) {
-                                item = items[key];
-                                issuccess = false;
-                                iswarning = false;
-                                iserror = false;
-                                switch (item['status']) {
-                                    case '正点':
-                                        issuccess = true;
-                                        break;
-                                    case '可能延期':
-                                        iswarning = true;
-                                        break;
-                                    case '延期':
-                                        iserror = true;
-                                        break;
-                                    default:
-
-                                        break;
-                                }
-                                waitinglist.items.push({
-                                    'name': item['name'],
-                                    'user': item['user'],
-                                    'endtime': item['endtime'],
-                                    'status': item['status'],
-                                    'level': item['level'],
-                                    'issuccess': issuccess,
-                                    'iswarning': iswarning,
-                                    'iserror': iserror
-                                });
-                            }
-                        } else {
-                            waitinglist.items = [];
+                                break;
                         }
+                        waitinglist.items.push({
+                            'name': item['name'],
+                            'user': item['user'],
+                            'endtime': item['endtime'],
+                            'status': item['status'],
+                            'level': item['level'],
+                            'issuccess': issuccess,
+                            'iswarning': iswarning,
+                            'iserror': iserror
+                        });
                     }
+                } else {
+                    waitinglist.items = [];
                 }
-                xmlhttp.open("GET", "{:url('user/index/waitinglist')}", false);
-                xmlhttp.send();
-            }
-            getWaitingList();
+            });
             var resourcelist = new Vue({
                 el: '#resourcelist',
                 data: {
@@ -498,75 +463,60 @@
                 }
             });
 
-            function getRescourceData() {
-                var xmlhttp;
-                if (window.XMLHttpRequest) {
-                    //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
-                    xmlhttp = new XMLHttpRequest();
-                } else {
-                    // IE6, IE5 浏览器执行代码
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                xmlhttp.onreadystatechange = function() {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        json = JSON.parse(xmlhttp.responseText);
-                        if (json['status'] == 1) {
-                            resourcelist.items = [];
-                            items = json['data'];
 
-                            for (key in items) {
-                                item = items[key];
-                                isinfo = false;
-                                issuccess = false;
-                                iswarning = false;
-                                iserror = false;
-                                switch (item['status']) {
-                                    case '可用':
-                                        issuccess = true;
-                                        switch (item['type']) {
-                                            case '计划书':
-                                                issuccess = false;
-                                                isinfo = true;
-                                                break;
+            $.get("{:url('user/index/resourcelist')}").done(function(data) {
+                if (data.status == 1) {
+                    resourcelist.items = [];
+                    items = data.data;
 
-                                            default:
-                                                break;
-                                        }
+                    for (key in items) {
+                        item = items[key];
+                        isinfo = false;
+                        issuccess = false;
+                        iswarning = false;
+                        iserror = false;
+                        switch (item['status']) {
+                            case '可用':
+                                issuccess = true;
+                                switch (item['type']) {
+                                    case '计划书':
+                                        issuccess = false;
+                                        isinfo = true;
                                         break;
-                                    case '特殊':
-                                        iswarning = true;
-                                        break;
-                                    case '不可用':
-                                        iserror = true;
-                                        break;
+
                                     default:
-
                                         break;
                                 }
+                                break;
+                            case '特殊':
+                                iswarning = true;
+                                break;
+                            case '不可用':
+                                iserror = true;
+                                break;
+                            default:
 
-                                resourcelist.items.push({
-                                    'name': item['name'],
-                                    'uploader': item['uploader'],
-                                    'uploadtime': item['uploadtime'],
-                                    'status': item['status'],
-                                    'safetygrade': item['safetygrade'],
-                                    'link': item['link'],
-                                    'issuccess': issuccess,
-                                    'iswarning': iswarning,
-                                    'iserror': iserror,
-                                    'isinfo': isinfo
-                                });
-                            }
-                            //console.info(resourcelist.items);
-                        } else {
-                            resourcelist.items = [];
+                                break;
                         }
+
+                        resourcelist.items.push({
+                            'name': item['name'],
+                            'uploader': item['uploader'],
+                            'uploadtime': item['uploadtime'],
+                            'status': item['status'],
+                            'safetygrade': item['safetygrade'],
+                            'link': item['link'],
+                            'issuccess': issuccess,
+                            'iswarning': iswarning,
+                            'iserror': iserror,
+                            'isinfo': isinfo
+                        });
                     }
+                    //console.info(resourcelist.items);
+                } else {
+                    resourcelist.items = [];
                 }
-                xmlhttp.open("GET", "{:url('user/index/resourcelist')}", false);
-                xmlhttp.send();
-            }
-            getRescourceData();
+            });
             var chartingbox = new Vue({
                 el: '#chartingbox',
                 data: {
@@ -574,69 +524,47 @@
                 }
             });
 
-            function getChartingData(key) {
-                var xmlhttp;
-                if (window.XMLHttpRequest) {
-                    //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
-                    xmlhttp = new XMLHttpRequest();
-                } else {
-                    // IE6, IE5 浏览器执行代码
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                xmlhttp.onreadystatechange = function() {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        json = JSON.parse(xmlhttp.responseText);
-                        if (json['status'] == 1) {
-                            chartingbox.items = [];
-                            items = json['data'];
 
-                            for (key in items) {
-                                item = items[key];
-                                issuccess = false;
-                                iswarning = false;
-                                iserror = false;
-                                switch (item['status']) {
-                                    case 'Note':
-                                        iswarning = true;
-                                        break;
-                                    case 'Debug':
-                                        iserror = true;
-                                        break;
-                                    case '管理员':
-                                        issuccess = true;
-                                        break;
-                                    default:
+            $.get("{:url('user/index/chartingboxdata')}").done(function(data) {
+                if (data.status == 1) {
+                    chartingbox.items = [];
+                    items = data.data;
 
-                                        break;
-                                }
+                    for (key in items) {
+                        item = items[key];
+                        issuccess = false;
+                        iswarning = false;
+                        iserror = false;
+                        switch (item['status']) {
+                            case 'Note':
+                                iswarning = true;
+                                break;
+                            case 'Debug':
+                                iserror = true;
+                                break;
+                            case '管理员':
+                                issuccess = true;
+                                break;
+                            default:
 
-                                chartingbox.items.push({
-                                    'time': item['time'],
-                                    'status': item['status'],
-                                    'user': item['user'],
-                                    'note': item['note'],
-                                    'issuccess': issuccess,
-                                    'iswarning': iswarning,
-                                    'iserror': iserror,
-                                });
-                            }
-                            //console.info(resourcelist.items);
-                        } else {
-                            chartingbox.items = [];
+                                break;
                         }
+
+                        chartingbox.items.push({
+                            'time': item['time'],
+                            'status': item['status'],
+                            'user': item['user'],
+                            'note': item['note'],
+                            'issuccess': issuccess,
+                            'iswarning': iswarning,
+                            'iserror': iserror,
+                        });
                     }
-                }
-                if (key) {
-                    xmlhttp.open("GET", "{:url('user/chartingboxdata')}", false);
-                    var form = document.getElementById("chartform");
-                    var form_data = new FormData(form);
-                    xmlhttp.send(form_data);
+                    //console.info(resourcelist.items);
                 } else {
-                    xmlhttp.open("GET", "{:url('user/index/chartingboxdata')}", false);
-                    xmlhttp.send();
+                    chartingbox.items = [];
                 }
-            }
-            getChartingData();
+            });
         </script>
 </body>
 

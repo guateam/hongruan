@@ -5,6 +5,6 @@ use think\Controller;
 class Add extends Controller
 {
     public function index(){
-        $this->fetch('add');
+        return $this->fetch('add');
     }
 }

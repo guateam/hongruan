@@ -5,6 +5,6 @@ use think\Controller;
 class History extends Controller
 {
     public function index(){
-        $this->fetch('history');
+        return $this->fetch('history');
     }
 }

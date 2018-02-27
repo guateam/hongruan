@@ -5,6 +5,6 @@ use think\Controller;
 class Email extends Controller
 {
     public function index(){
-        $this->fetch('email');
+        return $this->fetch('email');
     }
 }

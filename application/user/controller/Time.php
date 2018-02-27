@@ -5,6 +5,6 @@ use think\Controller;
 class Time extends Controller
 {
     public function index(){
-        $this->fetch('time');
+        return $this->fetch('time');
     }
 }
