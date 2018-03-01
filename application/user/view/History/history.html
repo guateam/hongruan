@@ -37,8 +37,8 @@
                                     <div class="row">
                                         <div class="col-md-55">
                                             <div class="thumbnail">
-                                                <div class="image view view-first" onClick="window.location.href='project.html'">
-                                                    <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
+                                                <div class="image view view-first" onClick="jumphistory()">
+                                                    <img style="width: 100%; display: block;" src="__STATIC__/image/4.jpg" alt="image" />
                                                     <div class="mask">
                                                         <p>点击查看详情</p>
                                                     </div>
@@ -52,7 +52,7 @@
                                         <div class="col-md-55">
                                             <div class="thumbnail">
                                                 <div class="image view view-first">
-                                                    <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
+                                                    <img style="width: 100%; display: block;" src="__STATIC__/image/4.jpg" alt="image" />
                                                     <div class="mask">
                                                         <p>点击查看详情</p>
                                                     </div>
@@ -66,7 +66,7 @@
                                         <div class="col-md-55">
                                             <div class="thumbnail">
                                                 <div class="image view view-first">
-                                                    <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
+                                                    <img style="width: 100%; display: block;" src="__STATIC__/image/4.jpg" alt="image" />
                                                     <div class="mask">
                                                         <p>点击查看详情</p>
                                                     </div>
@@ -80,7 +80,7 @@
                                         <div class="col-md-55">
                                             <div class="thumbnail">
                                                 <div class="image view view-first">
-                                                    <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
+                                                    <img style="width: 100%; display: block;" src="__STATIC__/image/4.jpg" alt="image" />
                                                     <div class="mask">
                                                         <p>点击查看详情</p>
                                                     </div>
@@ -94,7 +94,7 @@
                                         <div class="col-md-55">
                                             <div class="thumbnail">
                                                 <div class="image view view-first">
-                                                    <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
+                                                    <img style="width: 100%; display: block;" src="__STATIC__/image/4.jpg" alt="image" />
                                                     <div class="mask">
                                                         <p>点击查看详情</p>
                                                     </div>
@@ -110,7 +110,7 @@
                                         <div class="col-md-55">
                                             <div class="thumbnail">
                                                 <div class="image view view-first">
-                                                    <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
+                                                    <img style="width: 100%; display: block;" src="__STATIC__/image/4.jpg" alt="image" />
                                                     <div class="mask">
                                                         <p>点击查看详情</p>
                                                     </div>
@@ -124,7 +124,7 @@
                                         <div class="col-md-55">
                                             <div class="thumbnail">
                                                 <div class="image view view-first">
-                                                    <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
+                                                    <img style="width: 100%; display: block;" src="__STATIC__/image/4.jpg" alt="image" />
                                                     <div class="mask">
                                                         <p>点击查看详情</p>
                                                     </div>
@@ -138,7 +138,7 @@
                                         <div class="col-md-55">
                                             <div class="thumbnail">
                                                 <div class="image view view-first">
-                                                    <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
+                                                    <img style="width: 100%; display: block;" src="__STATIC__/image/4.jpg" alt="image" />
                                                     <div class="mask">
                                                         <p>点击查看详情</p>
                                                     </div>
@@ -152,7 +152,7 @@
                                         <div class="col-md-55">
                                             <div class="thumbnail">
                                                 <div class="image view view-first">
-                                                    <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
+                                                    <img style="width: 100%; display: block;" src="__STATIC__/image/4.jpg" alt="image" />
                                                     <div class="mask">
                                                         <p>点击查看详情</p>
                                                     </div>
@@ -166,7 +166,7 @@
                                         <div class="col-md-55">
                                             <div class="thumbnail">
                                                 <div class="image view view-first">
-                                                    <img style="width: 100%; display: block;" src="../image/4.jpg" alt="image" />
+                                                    <img style="width: 100%; display: block;" src="__STATIC__/image/4.jpg" alt="image" />
                                                     <div class="mask">
                                                         <p>点击查看详情</p>
                                                     </div>
@@ -198,7 +198,11 @@
     </div>
 
     {include file='common/js'}
-
+    <script>
+        function jumphistory() {
+            window.location.href = "{:url('user/project/index')}";
+        }
+    </script>
 </body>
 
 </html>

@@ -257,14 +257,82 @@ class Project extends Controller{
             }
 
         }
-        
     }
+
+    
+
     public function getprojectpan(){
         $ontime = ProjectModel::all(['State'=>'正点']);
         $dely0=ProjectModel::all(['State'=>'可能延期']);
         $dely=ProjectModel::all(['State'=>'延期']);
         $other=ProjectModel::all(['State'=>'其他']);
         $data=['series'=>["data"=>[["value"=>count($ontime),'name'=>'正点'],["value"=>count($dely0),'name'=>'可能延期'],["value"=>count($dely),'name'=>'延期'],["value"=>count($other),'name'=>'其他']]]];
+        return $data;
+    }
+    
+    public function gethistoryproject(){
+        $list=ProjectModel::all(["state"=>"完成","class"=>'root']);
+        $data=[];
+        foreach ($list as $value) {
+            $link="jumphistory(".$value->ID.")";
+            $item=[
+                "name"=>$value->ProjectName,
+                "endtime"=>$value->ProjectEndtime,
+                "img"=>"http://localhost/tp5/public/static/image/4.jpg",
+                "link"=>$link
+            ];
+            array_push($data,$item);
+        }
+        return $data;
+    }
+
+    public function getwaitinguserproject(){
+        $list=ProjectModel::all(["state"=>"等待人员"]);
+        $data=[];
+        foreach ($list as $value) {
+            $link="jumpaddproject(".$value->ID.")";
+            $item=[
+                "name"=>$value->ProjectName,
+                "endtime"=>$value->ProjectEndtime,
+                "img"=>"http://localhost/tp5/public/static/image/4.jpg",
+                "link"=>$link
+            ];
+            array_push($data,$item);
+        }
+        return $data;
+    }
+    public function getworkingproject(){
+        $list3=ProjectModel::all(["state"=>"正点"]);
+        $list2=ProjectModel::all(["state"=>"可能延期"]);
+        $list1=ProjectModel::all(["state"=>"延期"]);
+        $data=[];
+        $list=array_merge($list1,$list2,$list3);
+        foreach ($list as $value) {
+            $link="jumpaddproject(".$value->ID.")";
+            $item=[
+                "name"=>$value->ProjectName,
+                "endtime"=>$value->ProjectEndtime,
+                "img"=>"http://localhost/tp5/public/static/image/4.jpg",
+                "link"=>$link
+            ];
+            array_push($data,$item);
+        }
+        return $data;
+    }
+    
+    public function getwaitingresourceproject(){
+        $list=ProjectModel::all(["state"=>"等待资源"]);
+        $data=[];
+        foreach ($list as $value) {
+            $link="jumpaddproject(".$value->ID.")";
+            $item=[
+                "name"=>$value->ProjectName,
+                "endtime"=>$value->ProjectEndtime,
+                "img"=>"http://localhost/tp5/public/static/image/4.jpg",
+                "link"=>$link
+            ];
+            array_push($data,$item);
+        }
         return $data;
     }
 }

@@ -186,30 +186,7 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <table class="table" contenteditable="true">
-                                        <thead>
-                                            <tr>
-                                                <th>资源名称</th>
-                                                <th>上传人</th>
-                                                <th>交付时间</th>
-                                                <th>状态</th>
-                                                <th>等级</th>
-                                                <th>链接</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id='resourcelist'>
-                                            <tr v-bind:class="{'info':item.isinfo,'success':item.issuccess,'warning':item.iswarning,'error':item.iserror}" v-for="item in items">
-                                                <td>{{item.name}}</td>
-                                                <td>{{item.uploader}}</td>
-                                                <td>{{item.uploadtime}}</td>
-                                                <td>{{item.status}}</td>
-                                                <td>{{item.safetygrade}}</td>
-                                                <td>
-                                                    <a class='btn btn-info' href="send">下载</a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+
                                     <div class="pagination">
                                         <ul contenteditable="true" class="pagination pagination-centered">
                                             <li><a href="#">上一页</a></li>

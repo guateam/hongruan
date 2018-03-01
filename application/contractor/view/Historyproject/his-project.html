@@ -7,7 +7,19 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <style>
+        .high {
+            color: #F54F4A
+        }
+        
+        .mid {
+            color: #FCCE10
+        }
+        
+        .low {
+            color: #B5C334
+        }
+    </style>
     <title>接包人员</title>
     {include file='common/css'}
 </head>
@@ -28,7 +40,7 @@
                         <div class="col-md-8">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h1>这是历史项目详情页</h1>
+                                    <h1>{$project.name}</h1>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
@@ -36,12 +48,12 @@
                                     <div class="col-md-8 col-lg-12 col-sm-11">
 
                                         <div class="col-md-12 col-lg-12 col-sm-11">
-                                            <h2>项目名称：<span style="color: #00ace6">这是历史项目详情页</span></h2>
-                                            <h2>起始时间：<span style="color: #00ace6">2018.02.30</span></h2>
-                                            <h2>截止时间：<span style="color: #00ace6">2018.02.31</span></h2>
-                                            <h2>发包人员：<span style="color: #00ace6">法塔赫</span></h2>
-                                            <h2>接包人员：<span style="color: #00ace6">dark凡</span></h2>
-                                            <h2>安全等级：<span style="color: #00ace6">高</span></h2>
+                                            <h2>项目名称：<span style="color: #00ace6">{$project.name}</span></h2>
+                                            <h2>起始时间：<span style="color: #00ace6">{$project.starttime}</span></h2>
+                                            <h2>截止时间：<span style="color: #00ace6">{$project.endtime}</span></h2>
+                                            <h2>发包人员：<span style="color: #00ace6">{$project.contractor}</span></h2>
+                                            <h2>接包人员：<span style="color: #00ace6">{$project.user}</span></h2>
+                                            <h2>安全等级：<span class="{$project.color}">{$project.safetygrade}</span></h2>
                                             <h2>项目总评：<span style="color: #00ace6"><span style="color: red">88</span>/100</span>
                                             </h2>
                                             <h2>人员总评：<span style="color: #00ace6"><span style="color: red">78</span>/100</span>
@@ -57,7 +69,7 @@
                                         <!-- blockquote -->
                                         <blockquote>
                                             <h3>具体说明：</h3>
-                                            <p>薄一波（1908—2007），原名薄书存，山西定襄县蒋村人。1925年入党，曾在山西，天津等地从事兵运等工作，3次入狱。1946年起，担任军队领导工作。建国后，历任华北局第1书记，军区政委，财政部部长，国务院第3办公室主任，国家建设委员会主任，国家经济委员会主任等职。</p>
+                                            <p>{$project.plan}</p>
                                         </blockquote>
 
                                     </div>
@@ -73,11 +85,40 @@
                         <div class="col-md-4">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h1>评分雷达图</h1>
+                                    <h3>评分雷达图</h3>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
                                     <div id="radar" style="height:500px"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h1>子项目</h1>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <table class="table table-hover" contenteditable="true">
+                                        <thead>
+                                            <tr>
+                                                <th>项目名</th>
+                                                <th>负责人</th>
+                                                <th>等级</th>
+                                                <th>评分</th>
+                                                <th>操作</th>
+                                            </tr>
+                                            {volist name="childrenlist" id="list"}
+                                            <tr>
+                                                <td><a href="http://localhost/tp5/public/index.php/contractor/historyproject/index/id/{$list.id}">{$list.name}</a></td>
+                                                <td>{$list.user}</td>
+                                                <td>{$list.safetygrade}</td>
+                                                <td>90</td>
+                                            </tr>
+                                            {/volist}
+                                        </thead>
+                                    </table>
                                 </div>
                             </div>
                         </div>
