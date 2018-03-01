@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>个人信息</title>
+    {include file='common/css'}
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            {include file='common/left'}
+            <!-- /top navigation -->
+
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="x_title">
+                    <h3>人员管理</h3>
+                    <div class="clearfix"></div>
+                </div>
+                <div class='row'>
+                    <div class="col-md-8">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>接包人员基础信息</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class='col-xs-8' style='height:400px'>
+                                    <blockquote>
+                                        <h2>姓名：<span style="color: #00ace6">张三</span></h2>
+                                        <h2>性别：<span style="color: #00ace6">男</span></h2>
+                                        <h2>年龄：<span style="color: #00ace6">-1</span></h2>
+                                        <h2>手机号码：<span style="color: #00ace6">110</span></h2>
+                                        <h2>所属公司：<span style="color: #00ace6">Idea Factory Inc.</span></h2>
+                                        <h2>安全等级：<span style="color: #00ace6">高</span></h2>
+                                        <h2>信誉等级：<span style="color: #00ace6">高</span></h2>
+                                        <h2>擅长方向：<span style="color: #00ace6">java</span></h2>
+                                        <h2>工作年限：<span style="color: #00ace6">0</span></h2>
+                                        <h2>登记时间：<span style="color: #00ace6">2018.02.30</span></h2>
+                                        <h2>最后登陆时间：<span style="color: #00ace6">2018.02.31</span></h2>
+                                    </blockquote>
+                                </div>
+                                <div class='col-xs-4'>
+                                    <img src="__STATIC__/image/3.jpg" alt="..." class="img-responsive profile_img">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>能力雷达图</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div style='height:400px' id='radar'></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>参与项目</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <table class="table table-hover" contenteditable="true">
+                                    <thead>
+                                        <tr>
+                                            <th>项目名</th>
+                                            <th>开始时间</th>
+                                            <th>等级</th>
+                                            <th>状态</th>
+                                            <th>评级</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2><a href="{:url('user/companydetail/index')}">所属公司信息</a></h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+
+                                <blockquote>
+                                    <h4>公司名：<span style="color: #00ace6">Idea Factory Inc.</span></h4>
+                                    <h4>安全等级：<span style="color: #00ace6">高</span></h4>
+                                    <h4>信誉等级：<span style="color: #00ace6">高</span></h4>
+                                    <h4>擅长方向：<span style="color: #00ace6">java</span></h4>
+                                </blockquote>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2><a href="{:url('user/incomedetail/index')}">收入</a></h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                    <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                        <li role="presentation" class="active"><a href="#tab_home" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">概况</a>
+                                        </li>
+                                        <li role="presentation" class=""><a href="#tab_chart" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">收入详情</a>
+                                        </li>
+                                    </ul>
+                                    <div id="myTabContent" class="tab-content">
+                                        <div role="tabpanel" class="tab-pane fade active in" id="tab_home" aria-labelledby="home-tab">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <blockquote>
+                                                        <h2>总收入</h2>
+                                                    </blockquote>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <blockquote>
+                                                        <h2>本月收入</h2>
+                                                    </blockquote>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <blockquote>
+                                                        <h2>同比增长</h2>
+                                                    </blockquote>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="tab_chart" aria-labelledby="profile-tab">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {include file='common/js'}
+    <script>
+        option = {
+            title: {
+                text: '能力雷达图'
+            },
+            tooltip: {
+
+            },
+            legend: {
+                data: ['个人能力', '公司水平']
+            },
+            radar: {
+                // shape: 'circle',
+                name: {
+                    textStyle: {
+                        color: '#fff',
+                        backgroundColor: '#999',
+                        borderRadius: 3,
+                        padding: [3, 5]
+                    }
+                },
+                indicator: [{
+                    name: '参与项目',
+                    max: 50
+                }, {
+                    name: '语种数量',
+                    max: 15
+                }, {
+                    name: '工作时长',
+                    max: 300
+                }, {
+                    name: '准时',
+                    max: 100
+                }, {
+                    name: '安全等级',
+                    max: 5
+                }, {
+                    name: '市场价值创造',
+                    max: 25000
+                }]
+            },
+            series: [{
+                name: '能力',
+                type: 'radar',
+                // areaStyle: {normal: {}},
+                data: [{
+                    value: [12, 4, 250, 98.1, 4, 19000],
+                    name: '个人能力'
+                }, {
+                    value: [32, 12, 300, 99.0, 5, 21000],
+                    name: '公司水平'
+                }]
+            }]
+        };
+        var radarchart = echarts.init(document.getElementById('radar'));
+        radarchart.setOption(option);
+    </script>
+</body>
+
+</html>

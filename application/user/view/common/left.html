@@ -33,8 +33,10 @@
                     </li>
                     <li><a><i class="fa fa-edit"></i> 个人信息 <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
+                            <li><a href="{:url('user/userdetail/index')}">个人信息</a></li>
                             <li><a href="{:url('user/revise/index')}">信息编辑</a></li>
                             <li><a href="{:url('user/add/index')}">信息补充</a></li>
+
                         </ul>
                     </li>
                 </ul>
@@ -45,7 +47,7 @@
 
         <!-- /menu footer buttons -->
         <div class="sidebar-footer hidden-small">
-            <a data-toggle="tooltip" data-placement="top" title="编辑信息">
+            <a data-toggle="tooltip" data-placement="top" title="编辑信息" href="{:url('user/revise/index')}">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
             </a>
             <a data-toggle="tooltip" data-placement="top" title="FullScreen">
