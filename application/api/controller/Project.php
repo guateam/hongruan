@@ -205,4 +205,66 @@ class Project extends Controller{
             return [$project];
         }
     }
+    public function getbasicprojectbyid($id){
+        $project=ProjectModel::get(['ID'=>$id]);
+        if($project){
+            switch ($project->SafetyGrade) {
+                case '高':
+                    $color='high';
+                    break;
+                case '中':
+                    $color='mid';
+                    break;
+                case '低':
+                    $color='low';
+                    break;
+                default:
+                    $color='';
+                    break;
+            }
+
+            
+            $username=Users::get(['UserID'=>$project->UserID])->UserName;
+            $data=[
+                'id'=>$project->ID,
+                'name'=>$project->ProjectName,
+                'starttime'=>$project->ProjectStarttime,
+                'endtime'=>$project->ProjectEndtime,
+                'user'=>$username,
+                'safetygrade'=>$project->SafetyGrade,
+                'plan'=>$project->Plan,
+                'color'=>$color,
+                'contractor'=>$project->Contractor,
+            ];
+            return $data;
+        }else{
+            return 0;
+        }
+    }
+    public function getchildrenproject($projectid){
+        $data=[];
+        $project=ProjectModel::get(['ID'=>$projectid]);
+        if($project){
+            if($project->Children){
+                $list=json_decode($project->Children);
+                foreach($list as $item){
+                    $child=$this->getbasicprojectbyid($item);
+                    if($child!=0){
+                        array_push($data,$child);
+                    }
+                }
+                return $data;
+            }
+
+        }
+        
+    }
+    public function getprojectpan(){
+        $ontime = ProjectModel::all(['State'=>'正点']);
+        $dely0=ProjectModel::all(['State'=>'可能延期']);
+        $dely=ProjectModel::all(['State'=>'延期']);
+        $other=ProjectModel::all(['State'=>'其他']);
+        $data=['series'=>["data"=>[["value"=>count($ontime),'name'=>'正点'],["value"=>count($dely0),'name'=>'可能延期'],["value"=>count($dely),'name'=>'延期'],["value"=>count($other),'name'=>'其他']]]];
+        return $data;
+    }
 }

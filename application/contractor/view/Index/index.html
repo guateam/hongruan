@@ -304,19 +304,7 @@
                 type: 'pie',
                 radius: '55%',
                 center: ['50%', '60%'],
-                data: [{
-                    value: 335,
-                    name: '正点'
-                }, {
-                    value: 310,
-                    name: '可能延期'
-                }, {
-                    value: 234,
-                    name: '延期'
-                }, {
-                    value: 234,
-                    name: '其他'
-                }],
+                data: [],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -328,6 +316,13 @@
         };
         var panChart = echarts.init(document.getElementById('pan'));
         panChart.setOption(option);
+        panChart.showLoading();
+        $.get("{:url('contractor/index/getprojectpan')}").done(function(data) {
+            if (data.status) {
+                panChart.hideLoading();
+                panChart.setOption(data.data);
+            }
+        });
     </script>
 </body>
 

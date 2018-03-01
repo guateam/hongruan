@@ -8,7 +8,7 @@ class Index extends Controller
     {   
         //project的基础数据
         $project=new \app\api\controller\Project();
-        $data=$project->getbasicproject('000');
+        $data=$project->getbasicproject('1');
         if($data){
             $this->assign('project',$data);
         }else{
@@ -19,7 +19,7 @@ class Index extends Controller
     public function waitinglist(){
         //获取需要
         $project=new \app\api\controller\Project();
-        $id=($project->getbasicproject('000'))['id'];
+        $id=($project->getbasicproject('1'))['id'];
         $data=$project->getprojectwatinglist($id);
         if($data){
             $back=['data'=>$data,'status'=>1];
@@ -30,7 +30,7 @@ class Index extends Controller
     }
     public function structuredata(){
         $project=new \app\api\controller\Project();
-        $id=($project->getbasicproject('000'))['id'];
+        $id=($project->getbasicproject('1'))['id'];
         $data=$project->getprojectstructuretree($id);
         if($data){
             $back=['data'=>[$data],'status'=>1];
@@ -42,7 +42,7 @@ class Index extends Controller
     }
     public function waterfall(){
         $project=new \app\api\controller\Project();
-        $id=($project->getbasicproject('000'))['id'];
+        $id=($project->getbasicproject('1'))['id'];
         $data=$project->getprojectwaterfall($id);
         if($data){
             $back=['data'=>$data,'status'=>1];
@@ -53,7 +53,7 @@ class Index extends Controller
     }
     public function resourcelist(){
         $project=new \app\api\controller\Project();
-        $id=($project->getbasicproject('000'))['id'];
+        $id=($project->getbasicproject('1'))['id'];
         $data=$project->getprojectresource($id,1);
         if($data){
             $back=['data'=>$data,'status'=>1];
@@ -65,7 +65,7 @@ class Index extends Controller
     public function chartingboxdata(){
         $box=new \app\api\controller\ChatingBox();
         $project=new \app\api\controller\Project();
-        $id=($project->getbasicproject('000'))['id'];
+        $id=($project->getbasicproject('1'))['id'];
         $data=$box->read($id);
         if($data){
             $back=['data'=>$data,'status'=>1];

@@ -6,6 +6,6 @@ class Index extends Controller
 {
     public function index()
     {
-        return $this->error('404');
+        return $this->fetch();
     }
 }

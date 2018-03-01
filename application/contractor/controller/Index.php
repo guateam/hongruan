@@ -8,4 +8,12 @@ class Index extends Controller
     {
         return $this->fetch();
     }
+    public function getprojectpan(){
+        $project=new \app\api\controller\Project();
+        $data=$project->getprojectpan();
+        if($data){
+            $back=["data"=>$data,"status"=>1];
+            return json($back);
+        }
+    }
 }
