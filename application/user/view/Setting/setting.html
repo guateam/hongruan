@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>接包人员</title>
+    {include file='common/css'}
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="{:url('user/index/index')}" class="site_title"><i class="fa fa-paper-plane"></i> <span>众包平台</span></a>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+                            <img src="__STATIC__/image/3.jpg" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Welcome,</span>
+                            <h2>Graman</h2>
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+
+                    <br />
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <ul class="nav side-menu">
+                                <li><a><i class="fa fa-home"></i> 常规设置 <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="#basic">个人信息</a></li>
+                                        <li><a href="#privacy">隐私设置</a></li>
+                                    </ul>
+                                </li>
+                                <li><a><i class="fa fa-key"></i> 安全设置 <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="#password">关键信息修改</a></li>
+                                        <li><a href="#logindata">登陆记录</a></li>
+                                        <li><a href="#protocol">安全协议</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="编辑信息">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Lock">
+                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="登出" href="{:url('index/login/index')}">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+
+
+            <!-- top navigation -->
+            {include file='common/top'}
+            <!-- /top navigation -->
+
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="">
+
+                    <div class="clearfix"></div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h1>设置</h1>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <h3>常规设置</h3>
+                                    <div class="clearfix"></div>
+                                    <h2 id="basic">个人信息</h2>
+                                    <hr>
+                                    <div class="clearfix"></div>
+                                    <h2 id="privacy">隐私设置</h2>
+                                    <hr>
+                                    <h4>使用真实头像</h4>
+                                    <div class="make-switch" data-on="info" data-off="success"> <input type="checkbox" checked> </div>
+                                    <br>
+                                    <h3>安全设置</h3>
+                                    <div class="clearfix"></div>
+                                    <h2 id="password">关键信息修改</h2>
+                                    <hr>
+                                    <span><h4></h4></span>
+                                    <div class="clearfix"></div>
+                                    <h2 id="logindata">登陆记录</h2>
+                                    <hr>
+
+                                    <div class="clearfix"></div>
+                                    <h2 id="protocol">安全协议</h2>
+                                    <hr>
+                                    <span><h4></h4></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /page content -->
+
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+
+    {include file='common/js'}
+    <script>
+        $("div[class='switch']").each(function() {
+            $this = $(this);
+            var onColor = $this.attr("onColor");
+            var offColor = $this.attr("offColor");
+            var onText = $this.attr("onText");
+            var offText = $this.attr("offText");
+            var labelText = $this.attr("labelText");
+            var $switch_input = $(" :only-child", $this);
+            $switch_input.bootstrapSwitch({
+                onColor: onColor,
+                offColor: offColor,
+                onText: onText,
+                offText: offText,
+                labelText: labelText
+            });
+        });
+    </script>
+</body>
+
+</html>

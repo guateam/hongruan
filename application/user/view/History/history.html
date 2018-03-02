@@ -35,148 +35,22 @@
                                 <div class="x_content">
 
                                     <div class="row">
+                                        {volist name="list" id="vo"}
                                         <div class="col-md-55">
                                             <div class="thumbnail">
-                                                <div class="image view view-first" onClick="jumphistory()">
-                                                    <img style="width: 100%; display: block;" src="__STATIC__/image/4.jpg" alt="image" />
+                                                <div class="image view view-first" onClick="{$vo.link}">
+                                                    <img style="width: 100%; display: block;" src="{$vo.img}" alt="image" />
                                                     <div class="mask">
                                                         <p>点击查看详情</p>
                                                     </div>
                                                 </div>
                                                 <div class="caption">
-                                                    <p>这是项目名称</p>
-                                                    <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
+                                                    <p>{$vo.name}</p>
+                                                    <p>提交时间：<span style="color: #1ac6ff">{$vo.endtime}</span></p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-55">
-                                            <div class="thumbnail">
-                                                <div class="image view view-first">
-                                                    <img style="width: 100%; display: block;" src="__STATIC__/image/4.jpg" alt="image" />
-                                                    <div class="mask">
-                                                        <p>点击查看详情</p>
-                                                    </div>
-                                                </div>
-                                                <div class="caption">
-                                                    <p>这是项目名称</p>
-                                                    <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-55">
-                                            <div class="thumbnail">
-                                                <div class="image view view-first">
-                                                    <img style="width: 100%; display: block;" src="__STATIC__/image/4.jpg" alt="image" />
-                                                    <div class="mask">
-                                                        <p>点击查看详情</p>
-                                                    </div>
-                                                </div>
-                                                <div class="caption">
-                                                    <p>这是项目名称</p>
-                                                    <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-55">
-                                            <div class="thumbnail">
-                                                <div class="image view view-first">
-                                                    <img style="width: 100%; display: block;" src="__STATIC__/image/4.jpg" alt="image" />
-                                                    <div class="mask">
-                                                        <p>点击查看详情</p>
-                                                    </div>
-                                                </div>
-                                                <div class="caption">
-                                                    <p>这是项目名称</p>
-                                                    <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-55">
-                                            <div class="thumbnail">
-                                                <div class="image view view-first">
-                                                    <img style="width: 100%; display: block;" src="__STATIC__/image/4.jpg" alt="image" />
-                                                    <div class="mask">
-                                                        <p>点击查看详情</p>
-                                                    </div>
-                                                </div>
-                                                <div class="caption">
-                                                    <p>这是项目名称</p>
-                                                    <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="col-md-55">
-                                            <div class="thumbnail">
-                                                <div class="image view view-first">
-                                                    <img style="width: 100%; display: block;" src="__STATIC__/image/4.jpg" alt="image" />
-                                                    <div class="mask">
-                                                        <p>点击查看详情</p>
-                                                    </div>
-                                                </div>
-                                                <div class="caption">
-                                                    <p>这是项目名称</p>
-                                                    <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-55">
-                                            <div class="thumbnail">
-                                                <div class="image view view-first">
-                                                    <img style="width: 100%; display: block;" src="__STATIC__/image/4.jpg" alt="image" />
-                                                    <div class="mask">
-                                                        <p>点击查看详情</p>
-                                                    </div>
-                                                </div>
-                                                <div class="caption">
-                                                    <p>这是项目名称</p>
-                                                    <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-55">
-                                            <div class="thumbnail">
-                                                <div class="image view view-first">
-                                                    <img style="width: 100%; display: block;" src="__STATIC__/image/4.jpg" alt="image" />
-                                                    <div class="mask">
-                                                        <p>点击查看详情</p>
-                                                    </div>
-                                                </div>
-                                                <div class="caption">
-                                                    <p>这是项目名称</p>
-                                                    <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-55">
-                                            <div class="thumbnail">
-                                                <div class="image view view-first">
-                                                    <img style="width: 100%; display: block;" src="__STATIC__/image/4.jpg" alt="image" />
-                                                    <div class="mask">
-                                                        <p>点击查看详情</p>
-                                                    </div>
-                                                </div>
-                                                <div class="caption">
-                                                    <p>这是项目名称</p>
-                                                    <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-55">
-                                            <div class="thumbnail">
-                                                <div class="image view view-first">
-                                                    <img style="width: 100%; display: block;" src="__STATIC__/image/4.jpg" alt="image" />
-                                                    <div class="mask">
-                                                        <p>点击查看详情</p>
-                                                    </div>
-                                                </div>
-                                                <div class="caption">
-                                                    <p>这是项目名称</p>
-                                                    <p>提交时间：<span style="color: #1ac6ff">2012.02.31</span></p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {/volist}
                                     </div>
                                 </div>
                             </div>
@@ -199,8 +73,8 @@
 
     {include file='common/js'}
     <script>
-        function jumphistory() {
-            window.location.href = "{:url('user/project/index')}";
+        function jumphistory(id) {
+            window.location.href = "http://localhost/tp5/public/index.php/user/historyproject/index/id/" + id;
         }
     </script>
 </body>

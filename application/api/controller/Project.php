@@ -6,7 +6,7 @@ use app\api\model\Users;
 use app\api\model\Resource;
 
 class Project extends Controller{
-    public function getbasicproject($userid){
+    public function getbasicproject($userid){//已过期，不建议使用
         $project=ProjectModel::get(['UserId'=>$userid]);
         if($project){
             switch ($project->SafetyGrade) {
@@ -39,7 +39,8 @@ class Project extends Controller{
             return 0;
         }
     }
-    public function getprojectstructuretree($projectid){
+
+    public function getprojectstructuretree($projectid){//获取项目的树形结构图
         $style=[[],['color'=> '#F54F4A'],['color'=>'#FCCE10'],['color'=>'#B5C334']];
         $project=ProjectModel::get(['ID'=>$projectid]);
         if($project){
@@ -89,7 +90,7 @@ class Project extends Controller{
         }
     }
 
-    public function getprojectwaterfall($projectid){
+    public function getprojectwaterfall($projectid){//获取项目的流水瀑布图
         $project=ProjectModel::get(['ID'=>$projectid]);
         if($project){
             $list=$this->getlist($project);
@@ -112,7 +113,8 @@ class Project extends Controller{
             return $data;
         }
     }
-    public function getprojectwatinglist($projectid){
+
+    public function getprojectwatinglist($projectid){//获取项目等待列表
         $project=ProjectModel::get(['ID'=>$projectid]);
         if($project){
             $list=$this->getlist($project);
@@ -122,9 +124,15 @@ class Project extends Controller{
             $success=[];
             $complete=[];
             foreach ($list as $value) {
+                $idlist=explode(',',$value->UserID);
+                foreach($idlist as $value1){
+                    if($value1){
+                        $username=(Users::get(['UserID'=>$value1])->UserName).'、';
+                    }
+                }
                 $item=[
                     'name'=>$value->ProjectName,
-                    'user'=>$value->UserID,
+                    'user'=>$username,
                     'endtime'=>$value->ProjectEndtime,
                     'status'=>$value->State,
                     'level'=>$value->SafetyGrade
@@ -149,7 +157,7 @@ class Project extends Controller{
             return $data;
         }
     }
-    public function getprojectresource($projectid,$userid){
+    public function getprojectresource($projectid,$userid){//获取项目下资源列表
         $project=ProjectModel::get(['ID'=>$projectid]);
         if($project){
             $list=$this->getlist($project);
@@ -191,7 +199,7 @@ class Project extends Controller{
             return $data;
         }
     }
-    private function getlist($project){
+    private function getlist($project){//内部方法，获取所有子项目的id
         if($project->Children){
             $list=json_decode($project->Children);
             $data=[$project];
@@ -205,7 +213,7 @@ class Project extends Controller{
             return [$project];
         }
     }
-    public function getbasicprojectbyid($id){
+    public function getbasicprojectbyid($id){//通过id获取project基础资料
         $project=ProjectModel::get(['ID'=>$id]);
         if($project){
             switch ($project->SafetyGrade) {
@@ -223,8 +231,12 @@ class Project extends Controller{
                     break;
             }
 
-            
-            $username=Users::get(['UserID'=>$project->UserID])->UserName;
+            $idlist=explode(',',$project->UserID);
+            foreach($idlist as $value){
+                if($value){
+                    $username=(Users::get(['UserID'=>$value])->UserName).'、';
+                }
+            } 
             $data=[
                 'id'=>$project->ID,
                 'name'=>$project->ProjectName,
@@ -241,7 +253,7 @@ class Project extends Controller{
             return 0;
         }
     }
-    public function getchildrenproject($projectid){
+    public function getchildrenproject($projectid){//获取所有子项目
         $data=[];
         $project=ProjectModel::get(['ID'=>$projectid]);
         if($project){
@@ -261,7 +273,7 @@ class Project extends Controller{
 
     
 
-    public function getprojectpan(){
+    public function getprojectpan(){//获取所有项目延期情况
         $ontime = ProjectModel::all(['State'=>'正点']);
         $dely0=ProjectModel::all(['State'=>'可能延期']);
         $dely=ProjectModel::all(['State'=>'延期']);
@@ -270,7 +282,7 @@ class Project extends Controller{
         return $data;
     }
     
-    public function gethistoryproject(){
+    public function gethistoryproject(){//获取所有历史项目
         $list=ProjectModel::all(["state"=>"完成","class"=>'root']);
         $data=[];
         foreach ($list as $value) {
@@ -285,8 +297,26 @@ class Project extends Controller{
         }
         return $data;
     }
+    
+    public function gethistoryprojectbyuserid($userid){//获取指定userid的历史项目
+        $list=$this->getprojectbyuserid($userid);
+        $data=[];
+        foreach ($list as $value) {
+            if($value['State']=='完成' and $value['Class']=='root'){
+                $link="jumphistory(".$value['ID'].")";
+                $item=[
+                    "name"=>$value['ProjectName'],
+                    "endtime"=>$value['ProjectEndtime'],
+                    "img"=>"http://localhost/tp5/public/static/image/4.jpg",
+                    "link"=>$link
+                ];
+                array_push($data,$item);
+            }
+        }
+        return $data;
+    }
 
-    public function getwaitinguserproject(){
+    public function getwaitinguserproject(){//获取等待人员分配的project
         $list=ProjectModel::all(["state"=>"等待人员"]);
         $data=[];
         foreach ($list as $value) {
@@ -301,7 +331,7 @@ class Project extends Controller{
         }
         return $data;
     }
-    public function getworkingproject(){
+    public function getworkingproject(){//获取正在进行中的project
         $list3=ProjectModel::all(["state"=>"正点"]);
         $list2=ProjectModel::all(["state"=>"可能延期"]);
         $list1=ProjectModel::all(["state"=>"延期"]);
@@ -320,7 +350,7 @@ class Project extends Controller{
         return $data;
     }
     
-    public function getwaitingresourceproject(){
+    public function getwaitingresourceproject(){//获取等待资源分配的project
         $list=ProjectModel::all(["state"=>"等待资源"]);
         $data=[];
         foreach ($list as $value) {
@@ -334,5 +364,84 @@ class Project extends Controller{
             array_push($data,$item);
         }
         return $data;
+    }
+
+    public function getprojectbyuserid($id){//获取含有此userid的所有项目
+        $data=\think\Db::query("select * from project where UserID like '%,".$id.",%'");
+        return $data;
+    }
+    
+    public function getuserwaitingprojectbyuserid($userid){//获取等待接包人员确认接收的项目
+        $list=$this->getprojectbyuserid($userid);
+        $data=[];
+        foreach ($list as $value) {
+            if($value['State']=='代接收'){
+                $link="jumpprojectdetail(".$value['ID'].")";
+                $item=[
+                    "name"=>$value['ProjectName'],
+                    "endtime"=>$value['ProjectEndtime'],
+                    "img"=>"http://localhost/tp5/public/static/image/4.jpg",
+                    "link"=>$link
+                ];
+                array_push($data,$item);
+            }
+        }
+        return $data;
+    }
+
+    public function getuserworkingprojectbyuserid($userid){//获取含此userid的正在进行的项目
+        $list=$this->getprojectbyuserid($userid);
+        $list1=[];
+        $list2=[];
+        $list3=[];
+        $data=[];
+        foreach ($list as $value) {
+            $link="jumpprojectdetail(".$value['ID'].")";
+            $item=[
+                "name"=>$value['ProjectName'],
+                "endtime"=>$value['ProjectEndtime'],
+                "img"=>"http://localhost/tp5/public/static/image/4.jpg",
+                "link"=>$link
+            ];
+            if($value['State']=='正点'){
+                array_push($list3,$item);
+            }elseif($value['State']=='可能延期'){
+                array_push($list2,$item);
+            }elseif($value['State']=='延期'){
+                array_push($list1,$item);
+            }
+        }
+        $data=array_merge($list1,$list2,$list3);
+        return $data;
+    }
+
+    public function setprojectuserid($id,$idlist){//设置此id的project人员id
+        $data=',';
+        foreach ($idlist as $value) {
+            $data=$data.$value.',';
+        }
+        $project=ProjectModel::get(["ID"=>$id]);
+        $project->UserID=$data;
+        $project->save();
+    }
+
+    public function addnewproject($contractor,$starttime,$endttime,$safetygrade,$projectname,$class,$plan){//添加新project
+        $project=new ProjectModel();
+        $project->data([
+            "Contractor"=>$contractor,
+            "Starttime"=>$starttime,
+            "Endtime"=>$endttime,
+            "SafetyGrade"=>$safetygrade,
+            "ProjectName"=>$projectname,
+            "Class"=>$class,
+            "Plan"=>$plan
+        ]);
+        $project->save();
+    }
+    
+    public function setprojectresourceid($id,$resourceidlist){//设置resourceid
+        $project=ProjectModel::get(["ID"=>$id]);
+        $project->Resources=json($resourceidlist);
+        $project->save();
     }
 }

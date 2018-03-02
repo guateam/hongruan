@@ -91,4 +91,8 @@ class Users extends Controller{
         }
 
     }
+
+    public function getradarmap($userid){
+        
+    }
 }
